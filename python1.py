@@ -6,3 +6,6 @@
 def Hello():
     print("Hello World!")
 #--------------------------#
+#Test3---------------------#
+def Goodbye():
+    print("Goodbye World!")
