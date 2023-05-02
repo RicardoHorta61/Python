@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("/Users/ricar/OneDrive/Desktop/Projects/Other_Projects/Login_system/users.db")
+conn = sqlite3.connect("/Users/ricar/OneDrive/Desktop/Projects/Other_Projects/Login_system/databases/users.db")
 cur = conn.cursor()
 
 cur.execute('CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)')
@@ -8,8 +8,7 @@ cur.execute('CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)')
 conn.commit()
 
 def verify_login(name, password):
-    
-    conn = sqlite3.connect("/Users/ricar/OneDrive/Desktop/Projects/Other_Projects/Login_system/users.db")
+    conn = sqlite3.connect("/Users/ricar/OneDrive/Desktop/Projects/Other_Projects/Login_system/databases/users.db")
     cur = conn.cursor()
     cur.execute("INSERT INTO users (name, password) VALUES (?, ?)", ('john', '123'))
     cur.execute("SELECT * FROM users WHERE name =? AND password=?", (str(name), str(password)))
