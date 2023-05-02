@@ -1,4 +1,4 @@
-import controller
+import controller as con
 from time import sleep
     
 def main():
@@ -10,7 +10,7 @@ def main():
             make_login(name, password)
             break
         if command[0] == "2":
-            print("2")
+            make_signup(name, password)
             break
         if command[0] == "3":
             print("\n"*10 +" Goodbye!"+"\n"*5)
@@ -22,15 +22,21 @@ def main():
 def make_login(name, password):
     name = input("\n"*5 + "Name: ")
     password = input("Password: ")
-    result = controller.verify_login(name, password)
+    result = con.verify_user(name, password)
     if result == True:
         print("\n"*10+"Success!"+"\n"*3)
     else:
         print("\nUnsuccess!")
 
-
-
-
-
-def make_register():
-    pass
+def make_signup(name, password):
+    while True:
+        name = input("\n"*5 + "Name: ")
+        password = input("Password: ")
+        result = con.verify_user(name, password)
+        if result == True:
+            print("User already exists.")
+            sleep(1)
+        else:
+            con.create_user(name, password)
+            print("New user created with success!")
+            break
