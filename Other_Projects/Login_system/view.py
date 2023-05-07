@@ -3,20 +3,26 @@ from time import sleep
     
 def main():
     name, password = "", ""
-    Menu = "\n"*10 +"|Login System|"+"\n"*2 + "1- Login\n2- Sign up\n3- Exit\nOption: "
+    Menu = "\n"*10 +"|Login System|"+"\n"*2 + "1- Login\n2- Sign up\n3- Exit\n4- Users\nOption: "
     command = input(Menu).split(" ")
     while True:
         if command[0] == "1":
             make_login(name, password)
+            return_menu()
             break
         if command[0] == "2":
             make_signup(name, password)
+            return_menu()
             break
         if command[0] == "3":
             print("\n"*10 +" Goodbye!"+"\n"*5)
             break
+        if command[0] == "4":
+            print(con.create_users_list())
+            return_menu()
+            break
         else:
-            print("\n"*10 + "1,2 and 3 are the only options available. Try again.")
+            print("\n"*10 + "1,2,3 and 4 are the only options available. Try again.")
             sleep(1)
 
 def make_login(name, password):
@@ -40,3 +46,14 @@ def make_signup(name, password):
             con.create_user(name, password)
             print("New user created with success!")
             break
+
+def return_menu():
+    print("\n1- Return to Menu\n2- Exit")
+    command = input("Option: ")
+    if command == "1":
+        main()
+    if command == "2":
+        print("\n"*10 +" Goodbye!"+"\n"*5)
+    else:
+        print("\n"*10 + "1,2,3 and 4 are the only options available. Try again.")
+        return_menu()
